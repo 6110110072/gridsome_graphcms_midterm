@@ -1,40 +1,7 @@
 <template>
-  <header class="header" style="background-color: antiquewhite;">
+  <header class="header" style="background-color: antiquewhite">
     <div class="header__inner container">
-      <LogoComponent class="header__logo" version="simple" desc="Main Logo" />
-      <h1><strong>Pets Shop</strong></h1>
-      <div class="text-right"></div>
-      <div>
-        <b-button id="show-btn" class="cart-btn" @click="openModal()">
-          Cart
-          <b-icon icon="cart"></b-icon>
-        </b-button>
-        <!-- <button @click="reload">Reload</button> -->
-
-        <b-modal id="bv-modal-example" hide-footer>
-          <template #modal-title><strong style="font-size: 25px;">Products Cart</strong></template>
-          <div class="d-block text-center">
-            <span v-if="cartItems">
-              <li
-                v-for="(product, index) in countList"
-                :key="index"
-                style="text-align: left;list-style-type: number; "
-              >
-                Name: {{ product.name }} Qty: x{{ product.count }} Price: {{ product.price }} Baht
-              </li>
-              <br />
-              <h3>
-                <strong>Total Price : {{ TotalPrice }}</strong>
-              </h3>
-            </span>
-          </div>
-          <b-button class="mt-3 delete-btn" block @click="deleteItem()">delete</b-button>
-
-          <b-button class="mt-3 submit-btn" block @click="$bvModal.hide('bv-modal-example')">
-            Confirm
-          </b-button>
-        </b-modal>
-      </div>
+      <!-- <LogoComponent class="header__logo" version="simple" desc="Main Logo" /> -->
       <div class="header__hamburger">
         <button
           ref="hamburger"
@@ -49,6 +16,42 @@
           <span class="hamburger__line line03"></span>
           <span class="hamburger__line line04"></span>
         </button>
+      </div>
+      <h1>
+        <strong>Pets Shop</strong>
+        <b-icon icon="shop"></b-icon>
+      </h1>
+      <div>
+        <b-button id="show-btn" class="cart-btn" @click="openModal()">
+          Cart
+          <b-icon icon="cart2"></b-icon>
+        </b-button>
+        <!-- <button @click="reload">Reload</button> -->
+
+        <b-modal id="bv-modal-example" hide-footer>
+          <template #modal-title><strong style="font-size: 25px">Products Cart</strong></template>
+          <div class="d-block text-center">
+            <span v-if="cartItems">
+              <li
+                v-for="(product, index) in countList"
+                :key="index"
+                style=" list-style-type: number;text-align: left"
+                class="cart-font"
+              >
+                Name: {{ product.name }} Qty: x{{ product.count }} Price: {{ product.price }} Baht
+              </li>
+              <br />
+              <h3>
+                <strong class="price">Total Price : {{ TotalPrice }}</strong>
+              </h3>
+            </span>
+          </div>
+          <b-button class="mt-3 delete-btn" block @click="deleteItem()">Delete</b-button>
+
+          <b-button class="mt-3 submit-btn" block @click="$bvModal.hide('bv-modal-example')">
+            Confirm
+          </b-button>
+        </b-modal>
       </div>
 
       <div id="dropdowMenuContent" class="header__menu">
@@ -219,13 +222,25 @@ export default {
 }
 </script>
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;1,400&display=swap");
+.cart-font {
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+}
+.price {
+  /* color: #ff901e */
+  color: black;
+}
+.modal-body {
+  background-color: #e3d0c4;
+}
 .modal-header {
   background-color: cornsilk;
 }
 .close {
+  font-size: 30px;
   background-color: transparent;
   border: none;
-  font-size: 30px;
 }
 .cart-btn {
   background-color: #a80a02 !important;
@@ -268,7 +283,7 @@ export default {
     padding-top: 1em;
     padding-bottom: 1em;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
   }
 

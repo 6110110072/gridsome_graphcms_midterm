@@ -5,15 +5,20 @@
       <p class="hero__heading">Pets Shop</p>
       <h1 class="hero__extraLead">
         <strong>Pets Shop</strong>
-         A team who has passion in lovely pet and want to build the best online pet supplies for dog, cat, bird and all kinds of pets. Pet lover is able to search, compare and shopping in our online store with convenient and more affordable. We hope you and your pet enjoy with us.
+        <span class="text-description">
+          A team who has passion in lovely pet and want to build the best online pet supplies for
+          dog, cat, bird and all kinds of pets. Pet lover is able to search, compare and shopping in
+          our online store with convenient and more affordable. We hope you and your pet enjoy with
+          us.
+        </span>
       </h1>
     </div>
 
-    <SocialIcons class="hero__socialIcons" parent-component="the Hero" />
+    <!-- <SocialIcons class="hero__socialIcons" parent-component="the Hero" /> -->
 
-    <div class="hero__scrollBtn">
+    <!-- <div class="hero__scrollBtn">
       <font-awesome :icon="['fas', 'arrow-down']" />
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -22,12 +27,17 @@ import SocialIcons from "@/components/SocialIcons.vue"
 
 export default {
   components: {
-    SocialIcons,
-  },
+    SocialIcons
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;1,400&display=swap");
+.text-description {
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+}
 .hero {
   position: relative;
   display: grid;
@@ -103,10 +113,11 @@ export default {
   }
 
   .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 50%;
+    border-radius: 10px;
+  }
 }
 </style>
