@@ -19,7 +19,7 @@ function addStyleResource(rule) {
 module.exports = {
   siteName: "Pets Shop",
   siteUrl: "https://6110110072.github.io",
-  pathPrefix: "/gridsome_graphcms",
+  pathPrefix: "/gridsome_graphcms_midterm",
   plugins: [
     {
       use: "gridsome-plugin-base-components"
