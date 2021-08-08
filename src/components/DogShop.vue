@@ -4,35 +4,46 @@
     <br />
     <h1 class="text-title">Dogs</h1>
 
-    <b-button id="show-btn" class="cart-btn" @click="select0_10k()">
-      0 - 10,000 Baht
-      <b-icon icon="cart"></b-icon>
-    </b-button>
+    <div class="priceRange">
+      <h2>
+        <b-icon icon="sliders"></b-icon>
+        &nbsp;Price range
+      </h2>
 
-    <b-button id="show-btn" class="cart-btn" @click="select10k_40k()">
-      10,001 - 40,000 Baht
-      <b-icon icon="cart"></b-icon>
-    </b-button>
-
-    <b-button id="show-btn" class="cart-btn" @click="select40k_70k()">
-      40,001 - 70,000 Baht
-      <b-icon icon="cart"></b-icon>
-    </b-button>
-
-    <b-button id="show-btn" class="cart-btn" @click="select70k_grt()">
-      Greater than 70,000 Baht
-      <b-icon icon="cart"></b-icon>
-    </b-button>
-
+      <div style="text-align: center">
+        <b-button id="show-btn" class="filterPrice-btn" @click="select0_10k()">
+          0 - 10,000 Baht
+          <b-icon icon="cart"></b-icon>
+        </b-button>
+        &nbsp;&nbsp;&nbsp;
+        <b-button id="show-btn" class="filterPrice-btn" @click="select10k_40k()">
+          10,001 - 40,000 Baht
+          <b-icon icon="cart"></b-icon>
+        </b-button>
+        &nbsp;&nbsp;&nbsp;
+        <b-button id="show-btn" class="filterPrice-btn" @click="select40k_70k()">
+          40,001 - 70,000 Baht
+          <b-icon icon="cart"></b-icon>
+        </b-button>
+        &nbsp;&nbsp;&nbsp;
+        <b-button id="show-btn" class="filterPrice-btn" @click="select70k_grt()">
+          Greater than 70,000 Baht
+          <b-icon icon="cart"></b-icon>
+        </b-button>
+        &nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+    <br />
     <b-pagination
       v-model="currentPage"
-      @click.native="selectPage(currentPage)"
+      pills
       :total-rows="rows"
       :per-page="perPage"
       align="center"
+      @click.native="selectPage(currentPage)"
     ></b-pagination>
 
-    <h1>currentPage: {{ currentPage }}</h1>
+    <!-- <h1>currentPage: {{ currentPage }}</h1> -->
 
     <div v-if="this.$page.pageAll.productDogs" class="product-grid text-center">
       <div class="text-center">
@@ -62,7 +73,7 @@
                 </b-card-text>
                 <b-card-text class="categoty-text">
                   <span>
-                    <b-icon icon="star-fill"></b-icon>
+                    <b-icon icon="star-fill" class="cat-icon"></b-icon>
                     {{ product.categories[0].name }}
                   </span>
                 </b-card-text>
@@ -108,13 +119,13 @@ export default {
       ]
     }
   },
-  created() {
-    this.products = this.$page.page1.productDogs
-  },
   computed: {
     rows() {
       return this.$page.pageAll.productDogs.length
     }
+  },
+  created() {
+    this.products = this.$page.page1.productDogs
   },
   methods: {
     addToCart(itemToAdd) {
@@ -154,6 +165,14 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;1,400&display=swap");
+.filterPrice-btn {
+  background-color: #97634e;
+}
+.filterPrice-btn:hover,
+.filterPrice-btn:active,
+.filterPrice-btn:focus {
+  background-color: #6d3a11;
+}
 .card {
   max-height: 36rem !important;
 }

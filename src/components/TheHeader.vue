@@ -18,13 +18,15 @@
         </button>
       </div>
       <h1>
-        <strong>Pets Shop</strong>
+        <strong>Pets Shop&nbsp;&nbsp;</strong>
         <b-icon icon="shop"></b-icon>
       </h1>
       <div>
         <b-button id="show-btn" class="cart-btn" @click="openModal()">
           Cart
           <b-icon icon="cart2"></b-icon>
+          <!-- ({{ countList.length }}) -->
+          <span class="countItem">{{ countList.length }}</span>
         </b-button>
         <!-- <button @click="reload">Reload</button> -->
 
@@ -35,7 +37,7 @@
               <li
                 v-for="(product, index) in countList"
                 :key="index"
-                style=" list-style-type: number;text-align: left"
+                style="list-style-type: number; text-align: left"
                 class="cart-font"
               >
                 Name: {{ product.name }} Qty: x{{ product.count }} Price: {{ product.price }} Baht
@@ -213,7 +215,7 @@ export default {
       let sum = 0
       for (let i = 0; i < this.countList.length; i++) {
         console.log(this.countList[i].price)
-        sum += this.countList[i].price
+        sum += this.countList[i].price * this.countList[i].count
       }
       this.TotalPrice = sum
       this.$bvModal.show("bv-modal-example")
@@ -223,6 +225,43 @@ export default {
 </script>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;1,400&display=swap");
+
+.priceRange {
+  padding: 20px;
+  background-color: #f8eee0;
+  border-radius: 15px;
+}
+
+.countItem {
+  margin-left: 10px;
+  float: right;
+  width: 25px;
+  height: 25px;
+  background-color: #e68b6e;
+  border-radius: 50%;
+}
+.btn-primary {
+  color: #fff !important;
+  background-color: #4b91f8 !important;
+  border-color: #4b91f8 !important;
+}
+.cat-icon {
+  color: #ffcb5d;
+}
+.page-item > button,
+.page-item > span {
+  color: rgb(171 116 84) !important;
+  background-color: #fff !important;
+
+  /* color: #1d7e05; */
+}
+
+.active > button {
+  color: #fff !important;
+  background-color: rgb(171 116 84) !important;
+  border-color: rgb(171 116 84) !important;
+}
+
 .cart-font {
   font-family: "Kanit", sans-serif;
   font-weight: bold;
