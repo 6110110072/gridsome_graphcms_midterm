@@ -50,7 +50,7 @@
           </div>
           <b-button class="mt-3 delete-btn" block @click="deleteItem()">Delete</b-button>
 
-          <b-button class="mt-3 submit-btn" block @click="$bvModal.hide('bv-modal-example')">
+          <b-button class="mt-3 submit-btn" block @click="$bvModal.hide('bv-modal-example');deleteItem();">
             Confirm
           </b-button>
         </b-modal>
